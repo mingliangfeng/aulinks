@@ -10,10 +10,10 @@ class Link < ActiveRecord::Base
   attr_accessible :favicon, :info, :name, :title, :url
   
   has_many :sub_relations, class_name: "LinkRelation", foreign_key: :parent_id
-  has_many :sub_links, through: :sub_relations, source: :parent
+  has_many :sub_links, through: :sub_relations, source: :sub
   
   has_many :parent_relations, class_name: "LinkRelation", foreign_key: :sub_id
-  has_many :parent_links, through: :parent_relations, source: :sub
+  has_many :parent_links, through: :parent_relations, source: :parent
   
   has_many :category_relations, class_name: "CategoryLink"
   has_many :categories, through: :category_relations

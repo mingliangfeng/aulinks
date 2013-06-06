@@ -158,13 +158,21 @@ ActiveAdmin.register_page "Dashboard" do
     end
     
     def gen_category_box(category)
-      return gen_img_category_box(category) if Category::IMG_CATEGORIES.include?(category.hid)
-      all_links = category.sorted_links
+      all_links = category.sorted_links.reject {|link| link.is_sub? }
       cate_links = ["<div class='one-box'><div class='box-title'><h2>#{category.name} (#{all_links.count})</h2></div><div class='box-content'><div class='cate2'>"]
       all_links.each_with_index do |link, i|
         cate_links << '<ul class="section-seperator"><li></li></ul>' if i > 0 and i % 10 == 0
-        cate_links << '<ul>' if i % 5 == 0
-        cate_links << gen_link_html(link, category.hid)
+        cate_links << "<ul class='#{"img-link" if category.image_category?}'>" if i % 5 == 0
+        if category.image_category?
+          url = interal_path(link, category.hid)
+          anchor = view_context.link_to(url, dd: "#{link.id}-#{category.hid}", class: "link1 l#{link.id} img-link", rel: "nofollow") {
+            view_context.content_tag(:span, "", id: link.info)
+          }
+          cate_links << "<li>#{anchor}#{tooltip(link, category.hid)}</li>"
+        else
+          cate_links << gen_link_html(link, category.hid)
+        end
+        
         cate_links << '</ul>' if i % 5 == 4
       end
       cate_links << '</ul>' if all_links.count % 5 != 0
@@ -172,30 +180,14 @@ ActiveAdmin.register_page "Dashboard" do
       cate_links.join
     end
     
-    def gen_img_category_box(category)
-      cate_links = ["<div class='one-box'><div class='box-title'><h2>#{category.name} (#{category.links_count})</h2></div><div class='box-content'><div class='cate2'>"]
-      category.sorted_links.each_with_index do |link, i|
-        next if link.is_sub?
-        cate_links << '<ul class="section-seperator"><li></li></ul>' if i > 0 and i % 10 == 0
-        cate_links << '<ul class="img-link">' if i % 5 == 0
-        
-        url = interal_path(link, category.hid)
-        anchor = view_context.link_to(url, dd: "#{link.id}-#{category.hid}", class: "link1 l#{link.id} img-link", rel: "nofollow") {
-          view_context.content_tag(:span, "", id: link.info)
-        }
-        cate_links << "<li>#{anchor}#{tooltip(link, category.hid)}</li>"
-        
-        cate_links << '</ul>' if i % 5 == 4
-      end
-      cate_links.join
-    end
-    
     def tooltip(link, hid)
       display = link.title or abstract_url(link.url)
       tooltip_html = ['<div class="tip-holder"><div class="tooltip">']
       tooltip_html << display << "<br/>" << link.url
-      sub_links_html = link.sub_links.inject("") {|r, l| r + gen_link_anchor(l, hid, 1) }
-      tooltip_html << "<br/>" << sub_links_html unless sub_links_html.blank?
+      sub_links_html = link.sub_links.inject([]) {|r, l| r << gen_link_anchor(l, hid, 1) }
+      unless sub_links_html.blank?
+        tooltip_html << "<br/>" << sub_links_html.join(" ")
+      end
       tooltip_html << '<span class="arrow-top"></span></div></div>'
       tooltip_html.join
     end

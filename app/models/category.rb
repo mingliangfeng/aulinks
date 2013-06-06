@@ -101,8 +101,12 @@ class Category < ActiveRecord::Base
     "/#{encode_name}"
   end
   
+  def image_category?
+    IMG_CATEGORIES.include?(self.hid)
+  end
+  
   def desc
-    
+    #TODO: category description
   end
   
 private

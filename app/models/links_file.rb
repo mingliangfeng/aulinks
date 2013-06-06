@@ -72,6 +72,7 @@ private
         attributes = { name: words[4].strip, title: safe_strip(words[5]), url: format_url(url), favicon: safe_strip(words[7]), info: safe_strip(words[10]) }
         if @all_urls.has_key?(url)
           link = @all_urls[url]
+          attributes[:info] = "^" if link.info == "^"
           link.update_attributes(attributes)
         else
           link = Link.create(attributes)  
