@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= content_for?(:title) ? content_for(:title) : "Australian Websites - Online Directory" %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <meta charset="utf-8">
+  <meta name="description" content="<%= content_for?(:seo_description) ? content_for(:seo_description) : "Australian Websites, online directory of the most popular websites for news, games, dating, movies, music, shopping and other categories." %>" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+	<div id="header-wrapper">
+	  <div class="header">    
+		  <div class="fl">
+		    <div id="city-menu-wrapper">
+			    <a id="city-link" class="" href="javascript:void(0)">
+			      <span id="city-wrapper">
+			        <span id="city"><%= @city %></span><span class="gbma"></span>
+			      </span>    
+			    </a>
+			    <div id="city-menu">Loading...</div>
+		    </div>
+		    <div id="weather">
+		      <a href="javascript:void(0)"><span id="weather-wrapper"></span></a>
+		      <div id="wm">Loading weather forecasts...</div>
+		    </div>
+		  </div>
+		  <div class="fr heading-right">
+		    <a id="add-favourites" href="javascript:void(0)">Add to Favorites</a>
+		  </div> 	    
+	  </div>
+	</div>
+	<div id="main-content">
+		<div class="ez-wr">
+		  <div class="ez-box">
+		    <div id="section-1">
+			    <a id="logo" href="/" title="Australian Websites - Online Directory"><img alt="Australian Websites - Online Directory" src="/assets/aulinks.png" /></a>
+			    <div id="search">
+			    <form target="_blank" method="get" id="searchForm" action="http://www.google.com.au/search">		      
+	          <input id="g_search" name="q" value="" type="text" autocomplete="off" />
+	          <input id="btnSearch" value="Google Search" type="submit" />
+	          <div id="suggestions"></div>
+	          <div id="search-option">
+	            <input type="radio" value="" name="tbm" id="r1" checked="checked" /> Everything
+							<input type="radio" value="isch" name="tbm" id="r2" /> Images
+							<input type="radio" value="vid" name="tbm" id="r3" /> Videos
+							<input type="radio" value="" name="tbm" id="r4" /> Maps
+							<input type="radio" value="nws" name="tbm" id="r5" /> News
+							<input type="radio" value="bks" name="tbm" id="r7" /> Books
+							<input type="radio" value="shop" name="tbm" id="r8" /> Shopping
+	          </div>
+	          <input name="client" value="aulinks.com.au" type="hidden" />
+	        </form>
+			    </div>
+		    </div>
+		  </div>
+		  <div class="ss-h"><h1><%= content_for?(:seo_h) ? content_for(:seo_h) : "Australian Websites - Online Internet Directory" %></h1></div>
+		  <%= yield %>
+		  <div class="ez-box">
+		    <div id="footer">
+				  <span>
+				    &copy; <%= Time.now.year %> aulinks.com.au, all rights reserved
+				  </span>
+				</div>
+		  </div>
+		</div>
+	</div>
+
+</body>
+</html>

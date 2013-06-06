@@ -38,4 +38,14 @@ gem "jquery-rails", "2.3.0"
 # gem 'debugger'
 
 gem 'activeadmin'
+gem "meta_search",    '>= 1.1.0.pre'
+  
+gem "paperclip", "~> 3.0"
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem "factory_girl_rails"
+  gem 'database_cleaner'
+end

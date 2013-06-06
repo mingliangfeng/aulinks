@@ -1,4 +1,14 @@
 Aulinks::Application.routes.draw do
+  
+  root :to => 'application#index'
+  
+  #get "/:name" => "application#category"
+  #map.connect('/url/{param}', controller='go', action='index')
+  #map.connect('/url/{param}/', controller='go', action='index')
+  
+  #map.connect('/location/{param}', controller='dispatcher', action='location')
+  #map.connect('/location/{param}/', controller='dispatcher', action='location')
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 

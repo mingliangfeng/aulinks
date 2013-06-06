@@ -1,0 +1,4 @@
+<%= semantic_form_for [:admin, @links_file], :html => { :multipart => true } do |f| %>
+	<%= f.input :attachment, :as => :file %>
+	<%= f.actions %>
+<% end %>

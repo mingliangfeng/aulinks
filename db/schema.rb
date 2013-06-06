@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603134223) do
+ActiveRecord::Schema.define(:version => 20130604025649) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,5 +45,69 @@ ActiveRecord::Schema.define(:version => 20130603134223) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "categories", :force => true do |t|
+    t.integer  "hid"
+    t.string   "name"
+    t.integer  "is_top"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "category_links", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "link_id"
+    t.integer  "recommend"
+    t.integer  "show_order"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "category_relations", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "sub_id"
+    t.integer  "related"
+    t.integer  "show_order"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "link_relations", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "sub_id"
+    t.integer  "show_order"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "links", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "url"
+    t.string   "favicon"
+    t.string   "info"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "links_files", :force => true do |t|
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.datetime "applied_at"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  create_table "user_links", :force => true do |t|
+    t.string   "Category"
+    t.string   "url"
+    t.string   "ip"
+    t.string   "location"
+    t.integer  "is_friend"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

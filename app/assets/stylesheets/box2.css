@@ -1,0 +1,20 @@
+.one-box {margin-bottom:0px;}
+.box-title {color: #108410;line-height: 19px;padding: 0 5px;text-align:left;}
+.box-title h2 {font-size: 13px;margin: 0;padding: 0;font-weight: 400;}
+.box-title a {color: #224499;}
+.box-content {border: 2px solid #CBE6BD;border-top-width:0;border-radius: 0 0 5px 5px;background-color:#FFFFFF;padding: 2px;}
+.no-header .box-content {padding-bottom:8px;padding-top: 5px; border-radius:3px;border-top-width:2px;}
+.box-title.ad {border-width:1px;font-weight:normal;padding: 2px 5px 1px;}
+.box-title-ad {border-width:1px;font-weight:normal;padding: 2px 5px 1px;}
+.box-content.ad {border-width:1px;padding:10px 0;background-color: #FFFFFF;border-radius:3px 3px 3px 3px;}
+.no-header .box-content.ad {border-top-width:1px;padding:8px 0;}
+.color-bright .box-title {border-color: #009CEC #009CEC #C5D7EF;}
+.color-bright .box-content {border-color: #009CEC;}
+.color-bright2 .box-title {border-color: #F69A3A #F69A3A #C5D7EF;}
+.color-bright2 .box-content {border-color: #97C853;background: none repeat scroll 0 0 #FFFFFF;}
+.color-bright3 .box-title {border-color: #2FC300 #2FC300 #C5D7EF;}
+.color-bright3 .box-content {border-color: #2FC300;}
+.color-bright4 .box-title {border-color: #009CEC #009CEC #C5D7EF;}
+.color-bright4 .box-content {border-color: #009CEC;}
+
+.blog-box {border-radius: 4px 4px 4px 4px;padding-bottom: 8px;padding-top: 5px;border: 1px solid #97C853;background-color: #FFFFFF;padding: 20px;}
