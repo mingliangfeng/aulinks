@@ -1,5 +1,5 @@
 body{text-align:center}.ez-mw{margin-right:auto;margin-left:auto;text-align:left;position:relative;z-index:1;text-align:left;overflow:hidden}.ez-wr{clear:left}.ez-wr:after,.ez-box:after{content:".";display:block;height:0;clear:both;visibility:hidden}.ez-wr,.ez-box,.ez-last{display:inline-block;min-height:0}/* \*/* html .ez-wr,* html .ez-box,* html .ez-last{height:1%}.ez-wr,.ez-box,.ez-last{display:block}/* */.ez-oh{overflow:hidden}* html .ez-oh{overflow:visible}.ez-oa{overflow:auto}.ez-dt{display:table}.ez-it{display:inline-table}.ez-tc{display:table-cell}.ez-ib{display:inline-block}.ez-fl{float:left}* html .ez-fl{margin-right:-3px}.ez-fr{float:right}* html .ez-fr{margin-left:-3px}.ez-25{width:25%}.ez-33{width:33.33%}.ez-50{width:50%}.ez-66{width:66.66%}.ez-75{width:75%}.ez-negmr{margin-right:-1px}* html .ez-negmr{margin-right:-4px}* html .ez-negmx,.ez-negmx{margin-right:-1px}.ez-negml{margin-left:-1px}* html .ez-negml{margin-left:-4px}
-body {margin:0;font-size:13px;color:#1C1C1C;background:url("/public/img/body_bg.png") repeat-x scroll 0 22px #F5F5F8;}
+body {margin:0;font-size:13px;color:#1C1C1C;background:url("/assets/body_bg.png") repeat-x scroll 0 22px #F5F5F8;}
 div, li, body, html, h2, h1, input {font-family:Arial,sans-serif;}
 ul {list-style: none outside none;padding:0;margin:0;}
 ul.odd {}
@@ -17,7 +17,7 @@ a.unanchored, a.unanchored:hover {color: #3366CC !important;}
 .tooltip {display: block;font-size: 13px;text-align:left;background-color:#FFFFFF;border: 1px solid #DDDDDD;padding: 5px;margin-top:7px; width: 200px;border-radius: 3px 3px 3px 3px;box-shadow: 2px 2px 2px #999999;word-wrap: break-word;}
 .tooltip a {text-decoration:underline;color:#108410 !important;}
 .tooltip a:hover {text-decoration:none;color:#108410 !important;}
-.arrow-top {background: url("/public/img/arrow.png") no-repeat scroll 0 0 transparent;left: 30px;top: 0px;margin-top: 2px;position: absolute;width: 9px;height: 6px;}
+.arrow-top {background: url("/assets/arrow.png") no-repeat scroll 0 0 transparent;left: 30px;top: 0px;margin-top: 2px;position: absolute;width: 9px;height: 6px;}
 img {border:none;}
 #header-wrapper {border-bottom: 1px solid #CBE6BD;height: 22px;background-color:#FDFDFD;}
 #header-wrapper .header {margin: 0 auto;padding:0 5px 0 4px;}
@@ -137,7 +137,7 @@ div.category-nav a {color: #222222;}
 .cate2 ul.img-link {height:60px;padding: 12px 0 5px 21px;}
 .cate2 ul li {float:left; padding:0;width: 155px;text-align:left;}
 .cate2 ul.img-link li {width: 130px;padding-right:25px;text-align:center;}
-.cate2 ul li a span {display: block;height: 42px;width: 130px;border:1px solid #FFFFCC;background: url("/public/img/banks.png") repeat scroll transparent;}
+.cate2 ul li a span {display: block;height: 42px;width: 130px;border:1px solid #FFFFCC;background: url("/assets/banks.png") repeat scroll transparent;}
 .cate2 ul li a:hover span, .cate2 ul li a.hover span {border-color:#eeeeee;}
 #cate2-links {float:left;}
 .cate-l {float:left;width: 804px;}
@@ -155,7 +155,7 @@ div.category-nav a {color: #222222;}
 #ad3 .deal .info {text-align:left;position:absolute;bottom:5px;left:115px;width: 115px;}
 #ad3 .deal .info ul li {text-align:center;text-transform:uppercase;font-size:10px;font-weight:bold;float:left;margin:0 3px;}
 #ad3 .deal .info .price {color: #3F82D1;font-size: 18px;font-weight: bold;margin: 0 3px;width: 46px;text-transform:none;}
-#ad3 .deal .info .btn-deal {display:block;text-align:center;color:#FFFFFF;font-weight:bold;background: url("/public/img/btn-deal.png") no-repeat scroll 0 -42px transparent;font-size: 10px;font-weight: bold;height: 18px;margin: 5px 0 3px 3px;padding-top: 3px;text-transform: uppercase;width: 90px;}
+#ad3 .deal .info .btn-deal {display:block;text-align:center;color:#FFFFFF;font-weight:bold;background: url("/assets/btn-deal.png") no-repeat scroll 0 -42px transparent;font-size: 10px;font-weight: bold;height: 18px;margin: 5px 0 3px 3px;padding-top: 3px;text-transform: uppercase;width: 90px;}
 #ad3 .deal .info.sup {color: #3F82D1;display: inline-block;font-size: 10px;padding-top: 3px;vertical-align: top;}
 
 #cate2-links .one-box {text-align:left;}
@@ -186,5 +186,5 @@ div.category-nav a {color: #222222;}
 .blog-box .list_detail {text-align:left;}
 .blog-box .list_detail a.name {font-size: 16px;color: #108410;}
 .blog-box .seperator {clear:both;height:30px;border-top: 1px dashed #CCE0C2;margin: 0 30px 0 60px;}
-.blog-box li {list-style-image: url("/public/img/star_orange.gif");margin-left: 15px;}
+.blog-box li {list-style-image: url("/assets/star_orange.gif");margin-left: 15px;}
 .blog-box .header {margin-left: 15px;margin-bottom: 10px;font-weight:700;}
