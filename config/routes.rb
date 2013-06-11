@@ -1,13 +1,14 @@
 Aulinks::Application.routes.draw do
   
   root :to => 'application#index'
+  get "/service/weather" => "application#weather"
+  get "/location/:city" => "application#user_location"
+  get "/url/:id" => "application#url"
+  get "/urls/:category_id" => "application#urls"
+  get "/:name" => "application#category", :constraints => {:name => /(?!admin).*/}
   
-  #get "/:name" => "application#category"
   #map.connect('/url/{param}', controller='go', action='index')
   #map.connect('/url/{param}/', controller='go', action='index')
-  
-  #map.connect('/location/{param}', controller='dispatcher', action='location')
-  #map.connect('/location/{param}/', controller='dispatcher', action='location')
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

@@ -5,7 +5,6 @@ class LinksFile < ActiveRecord::Base
   attr_accessible :applied_at, :attachment
   
   has_attached_file :attachment
-  
   validates :attachment, :attachment_presence => true
   
   def import_urls!

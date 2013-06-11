@@ -15,4 +15,8 @@
 /tmp
 
 # ignore generated snippets
-/app/views/snippets
+#/app/views/snippets
+
+# ignore uploaded files
+/uploads/*
+

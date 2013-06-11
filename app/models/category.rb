@@ -81,8 +81,12 @@ class Category < ActiveRecord::Base
     self.links.order("category_links.show_order asc")
   end
   
-  def subordinateli_categories
+  def descendant_categories
     self.sub_categories.where("category_relations.related = 0").order("category_relations.show_order asc")
+  end
+  
+  def descendant_links
+    Link.descendant_links(self.id)
   end
   
   def links_count

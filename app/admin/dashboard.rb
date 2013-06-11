@@ -12,8 +12,8 @@ ActiveAdmin.register_page "Dashboard" do
     gen_category_links
     gen_category_boxes
     
-    gen_public_homepage
-    gen_public_categories
+    #gen_public_homepage
+    #gen_public_categories
     redirect_to admin_root_url, :notice => "All links have been generated based on current data in database!"
   end
 
@@ -115,7 +115,7 @@ ActiveAdmin.register_page "Dashboard" do
         category = Category.find_by_hid(hid)
         category_links = []
         category_ul = ["<ul class='ss-ul'><li>#{category.name} websites</li>"]
-        category.subordinateli_categories.each do |sub_category|
+        category.descendant_categories.each do |sub_category|
           category_links << gen_category_box(sub_category)
           category_ul << "<li>#{sub_category.name} websites</li>"
         end

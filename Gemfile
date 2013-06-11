@@ -37,7 +37,8 @@ gem "jquery-rails", "2.3.0"
 # To use debugger
 # gem 'debugger'
 
-gem 'activeadmin'
+#gem 'activeadmin'
+gem 'activeadmin', github: 'gregbell/active_admin'
 gem "meta_search",    '>= 1.1.0.pre'
   
 gem "paperclip", "~> 3.0"

@@ -1,0 +1,44 @@
+
+<div class="ez-wr">
+  <div id="nav-bar"><a href="/" title="Australian Websites - Online Directory">Home</a> <span class="nav-arrow">»</span> <%=@category.name%></div>
+  <div>
+    <div class="cate-l">
+	    <div id="cate2-links">
+		    <%= render :partial => "/snippets/category-#{@category.name.downcase}" %>
+		  </div>
+		  <div id="cate-buttom">
+		    <div id="cate-related">
+		      <div>Related Categories: </div>
+		      <%= render :partial => "/snippets/related-category-#{@category.name.downcase}" %>
+		    </div>
+		    <div id="top-arrow"><a href="#">Top ▲</a></div>
+		  </div>
+    </div>
+    <div class="cate-r">
+      <div id="ad2">
+			  <div class="one-box no-header">
+			    <div class="box-content ad">
+				  <% ads = ['<a href="http://www.worldvision.org/content.nsf/pages/bloggers-sponsor-a-child?open&campaign=105418224"><img src="http://media.worldvision.org/blog-resources/Banners/WVMom_120x600.jpg" width=120 height=600></a>', 
+                    '<a href="http://www.worldvision.org/content.nsf/pages/bloggers-sponsor-a-child?open&campaign=105418223"><img src="http://media.worldvision.org/blog-resources/Banners/we_have_120x600.gif" width=120 height=600></a>',
+					          '<a href="http://www.worldvision.org/content.nsf/pages/bloggers-sponsor-a-child?open&campaign=105418222"><img src="http://media.worldvision.org/blog-resources/Banners/Orphan_120x600.gif" width=120 height=600></a>',
+					          '<a href="http://www.worldvision.org/content.nsf/pages/bloggers-sponsor-a-child?open&campaign=105418221"><img src="http://media.worldvision.org/blog-resources/Banners/Soccer_120x600.gif" width=120 height=600></a>',
+					          '<a href="http://www.worldvision.org/content.nsf/pages/become-a-sponsor-now?open&campaign=1160073"><img src="http://media.worldvision.org/banners/christmas2010/wishlist/image/Wish_List_120x600.jpg" width="120" height="600" style="border:0" alt="Help a Child In Need"></a>'] %>
+					<%=raw ads.sample %>
+				  </div>
+				</div>
+			</div>
+    </div>
+  </div>
+</div>
+
+<% content_for :title do %>
+<%=@category.title%>
+<% end %>
+
+<% content_for :seo_description do %>
+<%=@category.readable_title%>, online directory of the most popular websites for <%=@category.desc%> and other <%=@category.name.downcase%> websites! aulinks.com.au
+<% end %>
+
+<% content_for :seo_h do %>
+<%=@category.title%> - Online Directory
+<% end %>

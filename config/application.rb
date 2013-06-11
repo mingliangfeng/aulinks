@@ -10,7 +10,7 @@ if defined?(Bundler)
 end
 
 Paperclip::Attachment.default_options[:url] = ':class/:id/:style.:extension'
-Paperclip::Attachment.default_options[:path] = ':rails_root/assets/:class/:id_partition/:style.:extension'
+Paperclip::Attachment.default_options[:path] = ':rails_root/uploads/:class/:id_partition/:style.:extension'
 
 module Aulinks
   class Application < Rails::Application
