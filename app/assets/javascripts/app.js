@@ -1,9 +1,13 @@
 function updateWeather() {
     $.get('/service/weather.json', null, function (data) {
         if (data.success == 1) {
-            set_weather_info(data.city, data.weather, data.forecasts);
+            set_weather_info(data.weather, data.forecasts);
         }
     }, 'json');
+}
+function set_weather_info(weather, forecasts) {
+    $('#weather a span#weather-wrapper').html('<span class="wc">' + weather + '</span><span class="gbma"></span>');
+    $('#weather #wm').html(forecasts);
 }
 function updateUrls(id) {
 	$.get('/urls/' + id, null, function (data) {
@@ -13,16 +17,6 @@ function updateUrls(id) {
 	        $(this).attr('href', data[url_id]);
 	    });
     }, 'json');
-}
-function cities() {
-    $.get('/util/cities', null, function (data) {
-        $('#city-menu').html(data);
-    }, 'html');
-}
-function set_weather_info(city, weather, forecasts) {
-    $('#city').html(city);
-    $('#weather a span#weather-wrapper').html('<span class="wc">' + weather + '</span><span class="gbma"></span>');
-    $('#weather #wm').html(forecasts);
 }
 
 var search_words = null, suggest_count = 0;
@@ -97,9 +91,9 @@ function query_suggest(e) {
     var q = jQuery.trim($(this).val());
     if (q == '' || q == search_words) return;
     search_words = q;
-    $.get('/util/suggest/' + search_words, null, function (data) {
-        if (data.suggest != null && data.suggest.length > 0) {
-            update_suggestions(data.suggest);
+    $.get('/util/suggest/' + search_words + '.json', null, function (suggest) {
+        if (suggest != null && suggest.length > 0) {
+            update_suggestions(suggest);
             show_suggest();
         }
     }, 'json');

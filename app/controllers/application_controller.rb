@@ -1,4 +1,8 @@
+require 'httparty'
 class ApplicationController < ActionController::Base
+  include Weather
+  include GoogleSuggest
+  
   protect_from_forgery
   
   before_filter :detect_city
@@ -18,10 +22,21 @@ class ApplicationController < ActionController::Base
   def weather
     city = params[:city] || @city
     respond_to do |format|
-      format.json do #TODO: get the weather from yahoo
-        render json: { 'success' => 1, 'city' => city,
-                  'weather' => "good weather",
-                  'forecasts' => Time.now }
+      format.json do 
+        render json: query_weather("#{city} Australia")
+      end
+    end
+  end
+  
+  def favorite
+    #TODO: track the favorite clicks
+    render :nothing => true, :status => 200, :content_type => 'text/html'
+  end
+  
+  def search_suggest
+    respond_to do |format|
+      format.json do 
+        render json: google_suggests(params[:word])
       end
     end
   end

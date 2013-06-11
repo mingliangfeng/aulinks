@@ -43,6 +43,8 @@ gem "meta_search",    '>= 1.1.0.pre'
   
 gem "paperclip", "~> 3.0"
 
+gem "httparty"
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
