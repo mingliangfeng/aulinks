@@ -47,6 +47,9 @@ gem "httparty"
 
 gem 'thin' 
 
+gem 'execjs'
+gem 'therubyracer'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
