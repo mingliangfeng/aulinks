@@ -13,7 +13,8 @@ ActiveAdmin.register_page "Dashboard" do
     gen_category_boxes
     
     #gen_public_homepage
-    #gen_public_categories
+    #gen_public_categories    
+    clear_caches
     redirect_to admin_root_url, :notice => "All links have been generated based on current data in database!"
   end
 
@@ -226,6 +227,15 @@ ActiveAdmin.register_page "Dashboard" do
     
     def write_to_file(file_path, content)
       File.open(file_path, "w:utf-8") {|f| f.write content }
+    end
+    
+    def clear_caches
+      Rails.cache.clear
+      ActionController::Base::expire_page(root_path)
+      Category::TOP_CATEGORIES.each do |hid|
+        category = Category.find_by_hid(hid)
+        ActionController::Base::expire_page category_path(:name => category.encode_name)
+      end      
     end
   end
 

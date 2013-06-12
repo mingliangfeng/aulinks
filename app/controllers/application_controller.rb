@@ -64,14 +64,17 @@ class ApplicationController < ActionController::Base
   
   def urls
     category_id = params[:category_id]
-    if category_id == "0"
-      links = Link.top_categories_links
-    else
-      links = Link.descendant_links(category_id)
+    links = Rails.cache.fetch("links-#{category_id}") do
+      if category_id == "0"
+        ls = Link.top_categories_links
+      else
+        ls = Link.descendant_links(category_id)
+      end
+      ls.inject({}) {|m, l| m[l.id] = l.url; m }
     end
     respond_to do |format|
       format.json do 
-        render json: links.inject({}) {|m, l| m[l.id] = l.url; m }
+        render json: links
       end
     end
   end

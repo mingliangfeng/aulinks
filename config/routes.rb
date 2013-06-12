@@ -7,7 +7,7 @@ Aulinks::Application.routes.draw do
   get "/util/suggest/:word" => "application#search_suggest"
   get "/url/:id" => "application#url"
   get "/urls/:category_id" => "application#urls"
-  get "/:name" => "application#category", :constraints => {:name => /((?!admin)[^\/])*/}
+  get "/:name" => "application#category", :constraints => {:name => /((?!admin)[^\/])*/}, :as => :category
   
   #map.connect('/url/{param}', controller='go', action='index')
   #map.connect('/url/{param}/', controller='go', action='index')
