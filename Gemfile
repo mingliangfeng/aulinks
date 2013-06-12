@@ -45,6 +45,8 @@ gem "paperclip", "~> 3.0"
 
 gem "httparty"
 
+gem 'thin' 
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'

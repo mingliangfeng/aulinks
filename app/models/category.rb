@@ -101,6 +101,10 @@ class Category < ActiveRecord::Base
     self.name.gsub(' ', '-').downcase
   end
   
+  def self.decode_name(name)
+    name.gsub('-', ' ').titleize
+  end
+  
   def encode_url
     "/#{encode_name}"
   end

@@ -7,12 +7,15 @@ class ApplicationController < ActionController::Base
   
   before_filter :detect_city
   
+  caches_page :index
+  caches_page :category
+  
   def index
   end
   
   def category
     name = params[:name]    
-    @category = Category.where(is_top: 1, name: name.capitalize).first
+    @category = Category.where(is_top: 1, name: Category.decode_name(name)).first
     if @category.blank?
       redirect_to root_url
       return

@@ -10,7 +10,7 @@ function set_weather_info(weather, forecasts) {
     $('#weather #wm').html(forecasts);
 }
 function updateUrls(id) {
-	$.get('/urls/' + id, null, function (data) {
+	$.get('/urls/' + id + ".json", null, function (data) {
 		$("a.link1").each(function () {
 			var dd = $(this).attr('dd');
 	        var url_id = dd.split('-')[0];
