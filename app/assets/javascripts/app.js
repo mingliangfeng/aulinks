@@ -1,8 +1,11 @@
 function updateWeather() {
     $.get('/service/weather.json', null, function (data) {
-        if (data.success == 1) {
+        if (data.success == 1) {	        
             set_weather_info(data.weather, data.forecasts);
+        } else {
+	        $('#weather').remove();
         }
+        $('#city').html(data.city);
     }, 'json');
 }
 function set_weather_info(weather, forecasts) {
@@ -111,7 +114,7 @@ $(function () {
 	$("#weather a, #wm").hover(
 		function () {
 		    $('#weather a').addClass("click");
-		    $("#weather #wm").width($('#weather a').width() - 42);
+		    $("#weather #wm").width($('#weather').width() - 42);
 		    $("#weather #wm").show();
 		},
 		function () {

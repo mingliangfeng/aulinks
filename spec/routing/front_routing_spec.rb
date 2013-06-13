@@ -1,6 +1,6 @@
 require "spec_helper"
 
-describe ApplicationController do
+describe FrontController do
   describe "routing" do
 
     it "routes to /admin" do
@@ -9,7 +9,7 @@ describe ApplicationController do
     end
     
     it "routes to /banking" do
-      expect(get("/banking")).to route_to(controller: "application", action: "category", name: "banking")
+      expect(get("/banking")).to route_to(controller: "front", action: "category", name: "banking")
       #visit "/banking"
       #current_path.should == "/banking"
     end

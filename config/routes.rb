@@ -1,16 +1,13 @@
 Aulinks::Application.routes.draw do
-  
-  root :to => 'application#index'
-  get "/service/weather" => "application#weather"
-  get "/location/:city" => "application#user_location"
-  get "/util/favorite" => "application#favorite"
-  get "/util/suggest/:word" => "application#search_suggest"
-  get "/url/:id" => "application#url"
-  get "/urls/:category_id" => "application#urls"
-  get "/:name" => "application#category", :constraints => {:name => /((?!admin)[^\/])*/}, :as => :category
-  
-  #map.connect('/url/{param}', controller='go', action='index')
-  #map.connect('/url/{param}/', controller='go', action='index')
+
+  root :to => 'front#index'
+  get "/service/weather" => "front#weather"
+  get "/location/:city" => "front#user_location"
+  get "/util/favorite" => "front#favorite"
+  get "/util/suggest/:word" => "front#search_suggest"
+  get "/url/:id" => "front#url"
+  get "/urls/:category_id" => "front#urls"
+  get "/:name" => "front#category", :constraints => {:name => /((?!admin)[^\/])*/}, :as => :category
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

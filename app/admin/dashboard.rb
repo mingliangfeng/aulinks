@@ -17,9 +17,18 @@ ActiveAdmin.register_page "Dashboard" do
     clear_caches
     redirect_to admin_root_url, :notice => "All links have been generated based on current data in database!"
   end
+  
+  page_action :clear_cache, :method => :put do
+    clear_caches
+    redirect_to admin_root_url, :notice => "Cache has been cleared!"
+  end
 
   action_item do
     link_to "Generate All Links", admin_dashboard_gen_links_path, :method => :put
+  end
+  
+  action_item do
+    link_to "Clear Cache", admin_dashboard_clear_cache_path, :method => :put
   end
   
   controller do
