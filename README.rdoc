@@ -1,3 +1,0 @@
-== Welcome to aulinks
-
-source code of website aulinks.com.au
