@@ -52,14 +52,14 @@ private
       next if line.blank?
       words = line.split("\t")
       unless words[0].blank?
-        category = Category.create(name: words[0].strip, is_top: 1, hid: safe_strip(words[1]))
+        category = Category.find_by_hid_or_create(safe_strip(words[1]), name: words[0].strip, is_top: 1)
         cateId0 = category.id
         order0 = 0
         cateorder0 = 0
       end
     
       unless words[2].blank?
-        category = Category.create(name: words[2].strip, is_top: 0, hid: safe_strip(words[3]))
+        category = Category.find_by_hid_or_create(safe_strip(words[3]), name: words[2].strip, is_top: 0)
         cateId1 = category.id
         order1 = 0
         cateorder0 = cateorder0 + 1
@@ -74,8 +74,9 @@ private
           attributes[:info] = "^" if link.info == "^"
           link.update_attributes(attributes)
         else
-          link = Link.create(attributes)  
-        end        
+          link = Link.create(attributes)
+          @all_urls[abstract_url(link.url)] = link
+        end
         linkId = link.id
         order1 = order1 + 1
         CategoryLink.create(category_id: cateId1, link_id: linkId, show_order: order1)
@@ -86,6 +87,7 @@ private
         if safe_strip(words[11]) == '1'
           CategoryLink.create(category_id: cateId0, link_id: linkId, show_order: 0, recommend: 1) # recommended links for category have not order
         end
+        
         if safe_strip(words[10]) == '^'
           LinkRelation.create(parent_id: preLinkId, sub_id: linkId, show_order: sublinkOrder)
           sublinkOrder = sublinkOrder + 1

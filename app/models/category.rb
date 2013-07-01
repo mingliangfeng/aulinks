@@ -117,6 +117,12 @@ class Category < ActiveRecord::Base
     #TODO: category description
   end
   
+  def self.find_by_hid_or_create(hid, attributes)
+    c = find_by_hid(hid)
+    c = create(attributes.merge(hid: hid)) unless c
+    c
+  end
+  
 private
   def init
     self.is_top ||= 0
