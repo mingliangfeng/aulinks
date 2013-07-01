@@ -1,5 +1,5 @@
 function updateWeather() {
-    $.get('/service/weather.json', null, function (data) {
+    $.get('/service/weather.json?r=' + Math.random(), null, function (data) {
         if (data.success == 1) {	        
             set_weather_info(data.weather, data.forecasts);
         } else {
@@ -212,5 +212,5 @@ $(function () {
 	);
 	
 	updateWeather();
-	setInterval(updateWeather, 60000 * 10);
+	setInterval(updateWeather, 60000 * 15);
 });
