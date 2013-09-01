@@ -82,10 +82,8 @@ private
         CategoryLink.create(category_id: cateId1, link_id: linkId, show_order: order1)
         if safe_strip(words[8]) == '1'
           order0 = order0 + 1
-          CategoryLink.create(category_id: cateId0, link_id: linkId, show_order: order0)
-        end
-        if safe_strip(words[11]) == '1'
-          CategoryLink.create(category_id: cateId0, link_id: linkId, show_order: 0, recommend: 1) # recommended links for category have not order
+          recommend = safe_strip(words[11]) == '1' ? 1 : 0
+          CategoryLink.create(category_id: cateId0, link_id: linkId, show_order: order0, recommend: recommend)
         end
         
         if safe_strip(words[10]) == '^'
