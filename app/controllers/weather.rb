@@ -13,8 +13,14 @@ module Weather
   end
   
   def query_weather(address)
-    woeid = geo(address)
-    yahoo_weather(woeid)
+    key = "yahoo_weather_#{address}"
+    w = Rails.cache.fetch(key, :expires_in => 30.minutes) do
+      Rails.logger.info("fetch weather information for #{address}")
+      woeid = geo(address)
+      yahoo_weather(woeid)
+    end
+    Rails.cache.delete(key) if w[:success] == 0
+    w
   end
   
   def yahoo_weather(woeid)
