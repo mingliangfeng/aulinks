@@ -20,3 +20,9 @@
 # ignore uploaded files
 /uploads/*
 
+# mina deploy script
+/config/deploy.rb
+
+# ignore all generated files
+/app/views/snippets/
+
